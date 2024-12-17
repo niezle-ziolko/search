@@ -1,19 +1,6 @@
-// Funkcja do ładowania plików HTML
-function loadHTML(elementId, file) {
-    fetch(file)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById(elementId).innerHTML = data;
-        })
-        .catch(error => console.error('Error loading the HTML:', error));
-};
-
-// Ładowanie nagłówka i stopki
-loadHTML('header', 'header.html');
-loadHTML('footer', 'footer.html');
-
 function luckySearch() {
     const query = document.querySelector('input[name="q"]').value;
+    
     if (query) {
         window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}&btnI=1`;
     };
@@ -37,5 +24,24 @@ async function fetchCountry() {
     };
 };
 
-// Call the function on page load
 fetchCountry();
+
+document.addEventListener('DOMContentLoaded', function () {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const logo = document.querySelector('.logo');
+
+    themeToggle.addEventListener('click', function () {
+        body.classList.toggle('dark-theme');
+        
+        if (body.classList.contains('dark-theme')) {
+            themeToggle.textContent = 'Theme: dark';
+            logo.src = 'logo-dark.png';
+            logo.alt = 'Google dark mode';
+        } else {
+            themeToggle.textContent = 'Theme: light';
+            logo.src = 'logo-light.png';
+            logo.alt = 'Google light mode';
+        };
+    });
+});

@@ -7,23 +7,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <a href="index.html">Google Search</a>
-    </header>
-    <form action="https://www.google.com/search">
-        <label for="all">Find pages with… all these words:</label>
-        <input type="text" id="all" name="as_q">
-
-        <label for="exact">Find pages with… this exact word or phrase:</label>
-        <input type="text" id="exact" name="as_epq">
-
-        <label for="any">Find pages with… any of these words:</label>
-        <input type="text" id="any" name="as_oq">
-
-        <label for="none">Find pages with… none of these words:</label>
-        <input type="text" id="none" name="as_eq">
-
-        <input type="submit" value="Advanced Search">
-    </form>
+    <div id="header"></div>
+    <div class="element">
+        <div class="container-logo">
+            <div class="box-logo">
+               <img class="logo" src="./images/logo.png" alt="Google" height="92">
+            </div>
+        </div>
+        <div class="container-form">
+            <div class="search">
+                <form action="https://google.com/search" method="GET">
+                    <label for="all">Find pages with… all these words:</label>
+                    <div class="search-bar">
+                        <input type="text" id="all" name="as_q" style="padding-left: 20px; padding-right: 20px;">
+                    </div>
+                    <label for="exact">Find pages with… this exact word or phrase:</label>
+                    <div class="search-bar">
+                        <input type="text" id="exact" name="as_epq" style="padding-left: 20px; padding-right: 20px;">
+                    </div>
+                    <label for="any">Find pages with… any of these words:</label>
+                    <div class="search-bar">
+                        <input type="text" id="any" name="as_oq" style="padding-left: 20px; padding-right: 20px;">
+                    </div>
+                    <label for="none">Find pages with… none of these words:</label>
+                    <div class="search-bar">
+                        <input type="text" id="none" name="as_eq" style="padding-left: 20px; padding-right: 20px;">
+                    </div>
+                    <div class="search-button">
+                        <input type="submit" value="Advanced Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="script.js" as="script" defer></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ function loadHTML(elementId, file) {
             document.getElementById(elementId).innerHTML = data;
         })
         .catch(error => console.error('Error loading the HTML:', error));
-}
+};
 
 // Ładowanie nagłówka i stopki
 loadHTML('header', 'header.html');
@@ -39,12 +39,3 @@ async function fetchCountry() {
 
 // Call the function on page load
 fetchCountry();
-
-let isDarkMode = false;
-
-document.getElementById('theme-toggle').addEventListener('click', function() {
-    isDarkMode = !isDarkMode;
-    document.body.style.backgroundColor = isDarkMode ? '#333' : '#fff';
-    document.body.style.color = isDarkMode ? '#fff' : '#000';
-    this.textContent = isDarkMode ? 'Theme: dark' : 'Theme: light';
-});

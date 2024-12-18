@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" class="light-theme">
 <head>
+    <!-- Specifies the character encoding for the document -->
     <meta charset="UTF-8">
+    <!-- Sets the viewport to make the site mobile-friendly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Defines the title of the webpage -->
     <title>Search</title>
+    <!-- Links the favicon to the page -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="256x256">
+    <!-- Links an external CSS file for styling -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
+        <!-- Navigation link to the main search page -->
         <div class="box-header">
             <a href="index.html">Search</a>
         </div>
+        <!-- Navigation link to the image search page -->
         <div class="box-header">
             <a href="images.html">Image Search</a>
         </div>
+        <!-- Navigation link to the advanced search page -->
         <div class="box-header">
             <a href="advanced.html">Advanced Search</a>
         </div>
     </header>
     <div class="element">
         <div class="container-logo">
+            <!-- Logo section -->
             <div class="box-logo">
                <img class="logo" src="logo-light.png" alt="Google light mode" height="92">
             </div>
         </div>
         <div class="container-form">
             <div class="search">
+                <!-- Search form that submits to Google's search engine -->
                 <form action="https://google.com/search" method="GET">
                     <div class="search-bar">
+                        <!-- Search icon inside the input bar -->
                         <span class="search-icon">
-                            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                            </svg>
                         </span>
+                        <!-- Search input field -->
                         <input type="text" name="q" placeholder="Search Google...">
                     </div>
                     <div class="search-button">
+                        <!-- Button to perform a search -->
                         <input type="submit" value="Google Search">
+                        <!-- Button to perform a "I'm Feeling Lucky" search -->
                         <button onclick="luckySearch()">I'm Feeling Lucky</button>
                     </div>
                 </form>
@@ -43,16 +59,19 @@
         </div>
     </div>
     <footer>
+        <!-- Displays the user's country or location -->
         <div class="country" id="country">
             Loading location...
         </div>
         <div class="footer-element">
+            <!-- Footer links for informational and business-related resources -->
             <div class="footer-box">
                 <a class="footer-link" href="https://about.google/?utm_source=google-PL&utm_medium=referral&utm_campaign=hp-footer&fg=1">About</a>
                 <a class="footer-link" href="https://www.google.com/intl/en_pl/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1">Advertising</a>
                 <a class="footer-link" href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1">Business</a>
                 <a class="footer-link" href="https://google.com/search/howsearchworks/?fg=1">How Search works</a>
             </div>
+            <!-- Footer links for privacy and terms, with a theme toggle button -->
             <div class="footer-box">
                 <a class="footer-link" href="https://policies.google.com/privacy?hl=en-PL&fg=1">Privacy</a>
                 <a class="footer-link" href="https://policies.google.com/terms?hl=en-PL&fg=1">Terms</a>
@@ -60,5 +79,6 @@
             </div>
         </div>
     </footer>
+    <!-- Links the external JavaScript file and ensures it loads after the page -->
     <script src="script.js" as="script" defer></script>
 </body>

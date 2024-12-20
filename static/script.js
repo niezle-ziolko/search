@@ -40,20 +40,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
     const logo = document.querySelector('.logo');
 
+    // Function to update the theme
+    function updateTheme(isDark) {
+        if (isDark) {
+            body.classList.add('dark-theme');
+            themeToggle.textContent = 'Theme: dark'; // Set the text to "Theme: dark"
+            logo.src = '/static/logo-dark.png'; // Switch to the dark mode logo
+            logo.alt = 'Encyclopedia dark mode'; // Update the logo's alt text
+        } else {
+            body.classList.remove('dark-theme');
+            themeToggle.textContent = 'Theme: light'; // Set the text to "Theme: light"
+            logo.src = '/static/logo-light.png'; // Switch to the light mode logo
+            logo.alt = 'Encyclopedia light mode'; // Update the logo's alt text
+        };
+    };
+
+    // Check and apply the saved theme preference from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    const isDarkTheme = savedTheme === 'dark';
+    updateTheme(isDarkTheme);
+
     // Add a click event listener to toggle between dark and light themes
     themeToggle.addEventListener('click', function () {
-        // Toggle the "dark-theme" class on the body element
-        body.classList.toggle('dark-theme');
-        
-        // Update the theme toggle text and logo based on the current theme
-        if (body.classList.contains('dark-theme')) {
-            themeToggle.textContent = 'Theme: dark'; // Set the text to "Theme: dark"
-            logo.src = 'logo-dark.png';             // Switch to the dark mode logo
-            logo.alt = 'Google dark mode';          // Update the logo's alt text
-        } else {
-            themeToggle.textContent = 'Theme: light'; // Set the text to "Theme: light"
-            logo.src = 'logo-light.png';             // Switch to the light mode logo
-            logo.alt = 'Google light mode';          // Update the logo's alt text
-        };
+        const isDark = !body.classList.contains('dark-theme');
+        updateTheme(isDark);
+
+        // Save the current theme preference to localStorage
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });

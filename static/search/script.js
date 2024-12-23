@@ -38,20 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Get references to the theme toggle button, body element, and logo element
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    const logo = document.querySelector('.logo');
 
     // Function to update the theme
     function updateTheme(isDark) {
         if (isDark) {
             body.classList.add('dark-theme');
             themeToggle.textContent = 'Theme: dark'; // Set the text to "Theme: dark"
-            logo.src = './static/search/logo-dark.png'; // Switch to the dark mode logo
-            logo.alt = 'Encyclopedia dark mode'; // Update the logo's alt text
         } else {
             body.classList.remove('dark-theme');
             themeToggle.textContent = 'Theme: light'; // Set the text to "Theme: light"
-            logo.src = './static/search/logo-light.png'; // Switch to the light mode logo
-            logo.alt = 'Encyclopedia light mode'; // Update the logo's alt text
         };
     };
 

@@ -64,3 +64,79 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });
+
+// Keyboard script
+const keyboardContainer = document.getElementById('keyboard-container');
+const searchInput = document.getElementById('search-input');
+const keyboardToggle = document.getElementById('keyboard-toggle');
+let keyboard;
+
+// Toggle keyboard visibility
+keyboardToggle.addEventListener('click', () => {
+    if (keyboardContainer.style.display === 'none' || !keyboardContainer.style.display) {
+        keyboardContainer.style.display = 'block';
+        if (!keyboard) initKeyboard();
+    } else {
+        keyboardContainer.style.display = 'none';
+    };
+});
+
+// Initialize the virtual keyboard
+function initKeyboard() {
+    keyboard = new SimpleKeyboard.default({
+        onChange: input => searchInput.value = input,
+        onKeyPress: button => handleKeyPress(button),
+        inputName: "default",
+        theme: "hg-theme-default hg-layout-default",
+        debug: true
+    });
+};
+
+// Handle special keypresses
+function handleKeyPress(button) {
+    if (button === "{shift}") {
+        toggleShift();
+    };
+};
+
+function toggleShift() {
+    const currentLayout = keyboard.options.layoutName;
+    keyboard.setOptions({
+        layoutName: currentLayout === "default" ? "shift" : "default"
+    });
+};
+
+const popup = document.getElementById('keyboard-popup');
+const popupHeader = document.getElementById('keyboard-popup-header');
+let offsetX = 0, offsetY = 0, isDragging = false;
+
+// Show the popup when toggling keyboard
+keyboardToggle.addEventListener('click', () => {
+    popup.style.display = popup.style.display === 'none' || !popup.style.display ? 'block' : 'none';
+    if (!keyboard) initKeyboard();
+});
+
+// Drag functionality
+popupHeader.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - popup.offsetLeft;
+    offsetY = e.clientY - popup.offsetTop;
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        popup.style.left = `${e.clientX - offsetX}px`;
+        popup.style.top = `${e.clientY - offsetY}px`;
+    };
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+const popupCloseButton = document.getElementById('popup-close');
+
+// Close the popup when clicking the "X" button
+popupCloseButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+});

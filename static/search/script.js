@@ -8,6 +8,7 @@ function luckySearch() {
     };
 };
 
+
 async function fetchCountry() {
     try {
         // Fetch the user's IP-based location data from the API
@@ -33,6 +34,7 @@ async function fetchCountry() {
 
 // Immediately call the fetchCountry function to fetch location on page load
 fetchCountry();
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // Get references to the theme toggle button, body element, and logo element
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });
+
 
 // Keyboard script
 const keyboardContainer = document.getElementById('keyboard-container');
@@ -140,3 +143,42 @@ const popupCloseButton = document.getElementById('popup-close');
 popupCloseButton.addEventListener('click', () => {
     popup.style.display = 'none';
 });
+
+
+// Microphone icon selection
+const microphoneIcon = document.querySelector('.icon.microphone');
+
+// Check for Web Speech API availability
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    // Speech recognition configuration
+    recognition.lang = 'en-US'; // You can change this to 'pl-PL' for Polish language
+    recognition.interimResults = false; // Only final results
+    recognition.maxAlternatives = 1; // Number of alternative results
+
+    // Handle microphone icon click
+    microphoneIcon.addEventListener('click', () => {
+        recognition.start(); // Start speech recognition
+    });
+
+    // When speech is recognized
+    recognition.addEventListener('result', (event) => {
+        const spokenText = event.results[0][0].transcript; // Retrieve recognized text
+        searchInput.value = spokenText; // Insert text into the search field
+        console.log(`Recognized text: ${spokenText}`);
+    });
+
+    // Handle recognition errors
+    recognition.addEventListener('error', (event) => {
+        console.error('Speech recognition error:', event.error);
+        alert('Failed to recognize speech. Please try again.');
+    });
+} else {
+    // If the API is not supported
+    console.warn('Web Speech API is not supported in this browser.');
+    microphoneIcon.addEventListener('click', () => {
+        alert('Speech recognition is not supported in this browser.');
+    });
+};

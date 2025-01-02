@@ -1,11 +1,8 @@
 function luckySearch() {
-    // Get the search query value from the input field with name="q"
-    const query = document.querySelector('input[name="q"]').value;
-    
-    // If the query is not empty, redirect to Google's "I'm Feeling Lucky" search
-    if (query) {
-        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}&btnI=1`;
-    };
+    var msgElement = document.getElementById("search-input");
+        
+    msgElement.value = '\\' + msgElement.value;
+    return true;
 };
 
 
@@ -178,7 +175,47 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
 } else {
     // If the API is not supported
     console.warn('Web Speech API is not supported in this browser.');
+
     microphoneIcon.addEventListener('click', () => {
         alert('Speech recognition is not supported in this browser.');
     });
 };
+
+
+const lensIcon = document.getElementById('lens-icon');
+const closeIcon = document.getElementById('close-icon');
+const searchBarLens = document.querySelector('.search-bar-lens');
+
+lensIcon.addEventListener('click', () => {
+    searchBarLens.style.display = 'flex';
+});
+
+closeIcon.addEventListener('click', () => {
+    searchBarLens.style.display = 'none';
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve the input element with the id 'lens-input'
+    const lensInput = document.getElementById("lens-input");
+
+    // Listen for keydown events in the input field
+    lensInput.addEventListener("keydown", function (event) {
+        // Check if the Enter key was pressed
+        if (event.key === "Enter") {
+            const imageUrl = lensInput.value;
+
+            if (imageUrl) {
+                // Construct the full URL for Google Lens
+                const lensUrl = `https://lens.google.com/uploadbyurl?url=${encodeURIComponent(imageUrl)}`;
+
+                // Decode the URL for better readability in the console
+                const decodedUrl = decodeURIComponent(lensUrl);
+
+                // Open the link in a new tab
+                window.open(lensUrl, "_blank");
+            } else {
+                console.log("Image url not found.");
+            };
+        };
+    });
+});

@@ -1,11 +1,3 @@
-function luckySearch() {
-    var msgElement = document.getElementById("search-input");
-        
-    msgElement.value = '\\' + msgElement.value;
-    return true;
-};
-
-
 async function fetchCountry() {
     try {
         // Fetch the user's IP-based location data from the API

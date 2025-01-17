@@ -4,7 +4,7 @@
 
 <h2>Youtube Video</h2>
 
-<p>A short video where I go through the required specifications of the project:<a href="https://www.youtube.com/watch?v=6F4eALwBmpM">https://www.youtube.com/watch?v=6F4eALwBmpM</a></p>
+<p>A short video where I go through the required specifications of the project:<a href="https://youtu.be/sLuKh2eZEbg">https://youtu.be/sLuKh2eZEbg</a></p>
 
 <h2>Project Requirements</h2>
 
